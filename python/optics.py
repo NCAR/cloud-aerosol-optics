@@ -89,6 +89,25 @@ def process_aerosol(config, type_str):
     return aerosol_data
 
 
+def show_mode_info(config, mam_str, mode_str, aerosol_data):
+
+    filename = os.path.expandvars(config[mam_str][mode_str]['filename'])
+    mode_name = config[mam_str][mode_str]['name']
+    logging.debug(filename)
+    ds = xr.open_dataset(filename)
+
+    dgnum = ds['dgnum'].values * 1.0e6
+    dgnumlo = ds['dgnumlo'].values * 1.0e6
+    dgnumhi = ds['dgnumhi'].values * 1.0e6
+    sigmag = ds['sigmag'].values
+    logging.info('dgnum:%7.4f um' % dgnum)
+    logging.info('dgnumlo:%7.4f um' % dgnumlo)
+    logging.info('dgnumhi:%7.4f um' % dgnumhi)
+    logging.info('sigmag:%5.2f um' % sigmag)
+    logging.info('rhcrystal:%5.2f' % ds['rhcrystal'].values)
+    logging.info('rhdeliques:%5.2f' % ds['rhdeliques'].values)
+
+
 def process_mam(config, mam_str, mode_str, mixture_str, aerosol_data):
 
     filename = os.path.expandvars(config[mam_str][mode_str]['filename'])
@@ -126,11 +145,11 @@ def process_mam(config, mam_str, mode_str, mixture_str, aerosol_data):
         mass_fraction = config['Mixtures'][mixture_str][aerosol_type]
         density = aerosol_data[aerosol_type]['density']
         B_coeff = np.array(aerosol_data[aerosol_type]['hygroscopicity'])
-        print(aerosol_type, mass_fraction, density, B_coeff)
+        # print(aerosol_type, mass_fraction, density, B_coeff)
         B_coeff_mean += (mass_fraction / density) * B_coeff
         vol_mean += mass_fraction / density
     B_coeff_mean /= vol_mean
-    print(B_coeff_mean)
+    # print(B_coeff_mean)
 
     f_D_dict = dict()
 
@@ -144,7 +163,7 @@ def process_mam(config, mam_str, mode_str, mixture_str, aerosol_data):
         D, f_D = log_normal(dgwet, sigmag, dgnumlo, dgnumhi, N, normalize=True)
         f_D_dict[RH] = f_D
         x = x_a * (2 * np.log(dgwet) - x_b)
-        print(RH, dgwet, x)
+        # print(RH, dgwet, x)
         # chebyshev_bilinear_fit(
         #     refindex_im_vis, refindex_real_vis, extpvis)
 
@@ -191,7 +210,7 @@ if __name__ == '__main__':
 
     # plot_refindex(aerosol_type_data)
 
-    process_mam(aerosol_config, 'MAM4', 'Mode1', 'Maritime', aerosol_type_data)
-    process_mam(aerosol_config, 'MAM4', 'Mode2', 'Maritime', aerosol_type_data)
-    process_mam(aerosol_config, 'MAM4', 'Mode3', 'Maritime', aerosol_type_data)
+    for mode in ['Mode1', 'Mode2', 'Mode3', 'Mode4']:
+        logging.info(mode + '\n')
+        show_mode_info(aerosol_config, 'MAM4', mode, aerosol_type_data)
 
