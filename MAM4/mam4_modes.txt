@@ -1,0 +1,123 @@
+
+
+Mode1
+{'filename': '$HOME/Data/Optics/mam4_mode1_rrtmg_aeronetdust_c141106.nc',
+ 'name': 'Accumulation',
+ 'types': ['BC', 'POM', 'SOA', 'SU', 'DU', 'SS']}
+dgnum: 0.1100 um
+dgnumlo: 0.0535 um
+dgnumhi: 0.4400 um
+sigmag: 1.80 um
+rhcrystal: 0.35
+rhdeliques: 0.80
+{'density': 1.0,
+ 'filename': '$HOME/Data/Optics/optics_BC.v1_3.nc',
+ 'hygroscopicity': [0.01, 0, 0],
+ 'name': 'Black Carbon',
+ 'plot_color': 'dimgray'}
+{'density': 1.8,
+ 'filename': '$HOME/Data/Optics/optics_OC.v1_3.nc',
+ 'hygroscopicity': [0.14, 0, 0],
+ 'name': 'Primary Organic Matter',
+ 'plot_color': 'darkgreen'}
+{'density': 1.8,
+ 'filename': '$HOME/Data/Optics/optics_OC.v1_3.nc',
+ 'hygroscopicity': [0.14, 0, 0],
+ 'name': 'Secondary Organic Aerosol',
+ 'plot_color': 'green'}
+{'density': 1.7,
+ 'filename': '$HOME/Data/Optics/optics_SU.v1_3.nc',
+ 'hygroscopicity': [2.42848, -3.85261, 1.88159],
+ 'name': 'Sulfate',
+ 'plot_color': 'darkslateblue'}
+{'density': 2.6,
+ 'filename': '$HOME/Data/Optics/optics_DU.v14_2.nc',
+ 'hygroscopicity': [0.14, 0, 0],
+ 'name': 'Dust',
+ 'plot_color': 'saddlebrown'}
+{'density': 2.2,
+ 'filename': '$HOME/Data/Optics/optics_SS.v3_3.nc',
+ 'hygroscopicity': [4.83257, -6.92329, 3.27805],
+ 'name': 'Sea Salt',
+ 'plot_color': 'mediumturquoise'}
+
+
+Mode2
+{'filename': '$HOME/Data/Optics/mam4_mode2_rrtmg_aitkendust_c141106.nc',
+ 'name': 'Aitken',
+ 'types': ['SOA', 'SU', 'DU', 'SS']}
+dgnum: 0.0260 um
+dgnumlo: 0.0087 um
+dgnumhi: 0.0520 um
+sigmag: 1.60 um
+rhcrystal: 0.35
+rhdeliques: 0.80
+{'density': 1.8,
+ 'filename': '$HOME/Data/Optics/optics_OC.v1_3.nc',
+ 'hygroscopicity': [0.14, 0, 0],
+ 'name': 'Secondary Organic Aerosol',
+ 'plot_color': 'green'}
+{'density': 1.7,
+ 'filename': '$HOME/Data/Optics/optics_SU.v1_3.nc',
+ 'hygroscopicity': [2.42848, -3.85261, 1.88159],
+ 'name': 'Sulfate',
+ 'plot_color': 'darkslateblue'}
+{'density': 2.6,
+ 'filename': '$HOME/Data/Optics/optics_DU.v14_2.nc',
+ 'hygroscopicity': [0.14, 0, 0],
+ 'name': 'Dust',
+ 'plot_color': 'saddlebrown'}
+{'density': 2.2,
+ 'filename': '$HOME/Data/Optics/optics_SS.v3_3.nc',
+ 'hygroscopicity': [4.83257, -6.92329, 3.27805],
+ 'name': 'Sea Salt',
+ 'plot_color': 'mediumturquoise'}
+
+
+Mode3
+{'filename': '$HOME/Data/Optics/mam4_mode3_rrtmg_aeronetdust_c141106.nc',
+ 'name': 'Coarse',
+ 'types': ['SU', 'DU', 'SS']}
+dgnum: 2.0000 um
+dgnumlo: 1.0000 um
+dgnumhi: 4.0000 um
+sigmag: 1.80 um
+rhcrystal: 0.35
+rhdeliques: 0.80
+{'density': 1.7,
+ 'filename': '$HOME/Data/Optics/optics_SU.v1_3.nc',
+ 'hygroscopicity': [2.42848, -3.85261, 1.88159],
+ 'name': 'Sulfate',
+ 'plot_color': 'darkslateblue'}
+{'density': 2.6,
+ 'filename': '$HOME/Data/Optics/optics_DU.v14_2.nc',
+ 'hygroscopicity': [0.14, 0, 0],
+ 'name': 'Dust',
+ 'plot_color': 'saddlebrown'}
+{'density': 2.2,
+ 'filename': '$HOME/Data/Optics/optics_SS.v3_3.nc',
+ 'hygroscopicity': [4.83257, -6.92329, 3.27805],
+ 'name': 'Sea Salt',
+ 'plot_color': 'mediumturquoise'}
+
+
+Mode4
+{'filename': '$HOME/Data/Optics/mam4_mode4_rrtmg_c130628.nc',
+ 'name': 'Primary Carbon',
+ 'types': ['BC', 'POM']}
+dgnum: 0.0500 um
+dgnumlo: 0.0100 um
+dgnumhi: 0.1000 um
+sigmag: 1.60 um
+rhcrystal: 0.35
+rhdeliques: 0.80
+{'density': 1.0,
+ 'filename': '$HOME/Data/Optics/optics_BC.v1_3.nc',
+ 'hygroscopicity': [0.01, 0, 0],
+ 'name': 'Black Carbon',
+ 'plot_color': 'dimgray'}
+{'density': 1.8,
+ 'filename': '$HOME/Data/Optics/optics_OC.v1_3.nc',
+ 'hygroscopicity': [0.14, 0, 0],
+ 'name': 'Primary Organic Matter',
+ 'plot_color': 'darkgreen'}
