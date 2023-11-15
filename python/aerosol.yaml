@@ -1,0 +1,110 @@
+MAM4:
+    Mode1:
+        name: Accumulation
+        filename: $HOME/Data/Optics/mam4_mode1_rrtmg_aeronetdust_c141106.nc
+        types:
+            - BC
+            - POM
+            - SOA
+            - SU
+            - DU
+            - SS
+    Mode2:
+        name: Aitken
+        filename: $HOME/Data/Optics/mam4_mode2_rrtmg_aitkendust_c141106.nc
+        types:
+            - SOA
+            - SU
+            - DU
+            - SS
+    Mode3:
+        name: Coarse
+        filename: $HOME/Data/Optics/mam4_mode3_rrtmg_aeronetdust_c141106.nc
+        types:
+            - SU
+            - DU
+            - SS
+    Mode4:
+        name: Primary Carbon
+        filename: $HOME/Data/Optics/mam4_mode4_rrtmg_c130628.nc
+        types:
+            - BC
+            - POM
+
+Types:
+    WAT:
+        name: Water
+        # filename: $HOME/Data/Optics/afcrl1987_shettle.nc
+        filename: $HOME/Data/Optics/optics_WAT.nc
+        density: 1.0
+        hygroscopicity:
+            - None
+        plot_color: dodgerblue
+    ICE:
+        name: Ice
+        # filename: $HOME/Data/Optics/afcrl1987_shettle.nc
+        filename: $HOME/Data/Optics/optics_ICE.nc
+        density: 1.0
+        hygroscopicity:
+            - None
+        plot_color: aqua
+    BC:
+        name: Black Carbon
+        filename: $HOME/Data/Optics/optics_BC.v1_3.nc
+        density: 1.0
+        hygroscopicity:
+            - 0.01
+            - 0
+            - 0
+        plot_color: dimgray
+    POM:
+        name: Primary Organic Matter
+        filename: $HOME/Data/Optics/optics_OC.v1_3.nc
+        density: 1.8 # insoluble 2.0
+        hygroscopicity:
+            - 0.14
+            - 0
+            - 0
+        plot_color: darkgreen
+    SOA:
+        name: Secondary Organic Aerosol
+        filename: $HOME/Data/Optics/optics_OC.v1_3.nc
+        density: 1.8
+        hygroscopicity:
+            - 0.14
+            - 0
+            - 0
+        plot_color: green
+    SU:
+        name: Sulfate
+        filename: $HOME/Data/Optics/optics_SU.v1_3.nc
+        density: 1.7
+        hygroscopicity:
+            - 2.42848
+            - -3.85261
+            - 1.88159
+        plot_color: darkslateblue
+    DU:
+        name: Dust
+        filename: $HOME/Data/Optics/optics_DU.v14_2.nc
+        density: 2.6
+        hygroscopicity:
+            - 0.14
+            - 0
+            - 0
+        plot_color: saddlebrown
+    SS:
+        name: Sea Salt
+        filename: $HOME/Data/Optics/optics_SS.v3_3.nc
+        density: 2.2
+        hygroscopicity:
+            - 4.83257
+            - -6.92329
+            - 3.27805
+        plot_color: mediumturquoise
+
+Mixtures:
+    Maritime:
+        SS: 0.8
+        SU: 0.2
+
