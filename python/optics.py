@@ -104,6 +104,7 @@ def print_mode_info(config, mam_str, mode_str, aerosol_data):
     dgnumhi = ds['dgnumhi'].values * 1.0e6
     sigmag = ds['sigmag'].values
 
+
     print('\n')
     print(mode_str)
     pp.pprint(config[mam_str][mode_str])
@@ -113,6 +114,8 @@ def print_mode_info(config, mam_str, mode_str, aerosol_data):
     print('sigmag:%5.2f um' % sigmag)
     print('rhcrystal:%5.2f' % ds['rhcrystal'].values)
     print('rhdeliques:%5.2f' % ds['rhdeliques'].values)
+    for type_str in config[mam_str][mode_str]['types']:
+        pp.pprint(config['Types'][type_str])
 
 
 def process_mam(config, mam_str, mode_str, mixture_str, aerosol_data):
