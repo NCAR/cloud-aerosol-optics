@@ -6,6 +6,7 @@ import sys
 import argparse
 import logging
 import yaml
+import pprint
 
 import numpy as np
 import xarray as xr
@@ -89,7 +90,9 @@ def process_aerosol(config, type_str):
     return aerosol_data
 
 
-def show_mode_info(config, mam_str, mode_str, aerosol_data):
+def print_mode_info(config, mam_str, mode_str, aerosol_data):
+
+    pp = pprint.PrettyPrinter(depth=4)
 
     filename = os.path.expandvars(config[mam_str][mode_str]['filename'])
     mode_name = config[mam_str][mode_str]['name']
@@ -101,13 +104,15 @@ def show_mode_info(config, mam_str, mode_str, aerosol_data):
     dgnumhi = ds['dgnumhi'].values * 1.0e6
     sigmag = ds['sigmag'].values
 
-    logging.info(mode_str)
-    logging.info('dgnum:%7.4f um' % dgnum)
-    logging.info('dgnumlo:%7.4f um' % dgnumlo)
-    logging.info('dgnumhi:%7.4f um' % dgnumhi)
-    logging.info('sigmag:%5.2f um' % sigmag)
-    logging.info('rhcrystal:%5.2f' % ds['rhcrystal'].values)
-    logging.info('rhdeliques:%5.2f' % ds['rhdeliques'].values)
+    print('\n')
+    print(mode_str)
+    pp.pprint(config[mam_str][mode_str])
+    print('dgnum:%7.4f um' % dgnum)
+    print('dgnumlo:%7.4f um' % dgnumlo)
+    print('dgnumhi:%7.4f um' % dgnumhi)
+    print('sigmag:%5.2f um' % sigmag)
+    print('rhcrystal:%5.2f' % ds['rhcrystal'].values)
+    print('rhdeliques:%5.2f' % ds['rhdeliques'].values)
 
 
 def process_mam(config, mam_str, mode_str, mixture_str, aerosol_data):
@@ -213,6 +218,5 @@ if __name__ == '__main__':
     # plot_refindex(aerosol_type_data)
 
     for mode in ['Mode1', 'Mode2', 'Mode3', 'Mode4']:
-        print('\n')
-        show_mode_info(aerosol_config, 'MAM4', mode, aerosol_type_data)
+        print_mode_info(aerosol_config, 'MAM4', mode, aerosol_type_data)
 
