@@ -100,6 +100,8 @@ def show_mode_info(config, mam_str, mode_str, aerosol_data):
     dgnumlo = ds['dgnumlo'].values * 1.0e6
     dgnumhi = ds['dgnumhi'].values * 1.0e6
     sigmag = ds['sigmag'].values
+
+    logging.info(mode_str)
     logging.info('dgnum:%7.4f um' % dgnum)
     logging.info('dgnumlo:%7.4f um' % dgnumlo)
     logging.info('dgnumhi:%7.4f um' % dgnumhi)
@@ -211,6 +213,6 @@ if __name__ == '__main__':
     # plot_refindex(aerosol_type_data)
 
     for mode in ['Mode1', 'Mode2', 'Mode3', 'Mode4']:
-        logging.info(mode + '\n')
+        print('\n')
         show_mode_info(aerosol_config, 'MAM4', mode, aerosol_type_data)
 
