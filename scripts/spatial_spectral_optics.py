@@ -4,6 +4,14 @@ import argparse
 import logging
 import numpy as np
 import pandas as pd
+import xarray as xr
+
+from analysis_utils import fill_date_template
+
+
+def process_file(filename):
+    logging.info(filename)
+
 
 if __name__ == '__main__':
 
@@ -20,14 +28,14 @@ if __name__ == '__main__':
         default=os.path.join(os.getenv('HOME'), 'Data'),
         help='top-level data directory (default $HOME/Data)')
     parser.add_argument('--start', type=str,
-        default='20080701',
+        default='20080801',
         help='start date (yyyymmdd)')
     parser.add_argument('--end', type=str,
-        default='20080701',
+        default='20080801',
         help='end date (yyyymmdd)')
     parser.add_argument('--file_pattern', type=str,
         default=os.path.join('MERRA2_inst3', 'aer_Nv',
-            'MERRA2_300.inst3_3d_aer_Nv.yyyymmdd.nc4'))
+            'MERRA2_300.inst3_3d_aer_Nv.YYYYMMDD.nc4'))
     args = parser.parse_args()
 
     """
@@ -38,4 +46,9 @@ if __name__ == '__main__':
 
     dates = pd.date_range(start=args.start, end=args.end, freq='D')
     logging.info(dates)
+
+    for date in dates:
+        date_str = date.strftime('%Y-%m-%b-%d-%j')
+        filename = fill_date_template(args.file_pattern, date_str)
+        process_file(filename)
 
