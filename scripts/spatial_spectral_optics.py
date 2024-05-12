@@ -21,9 +21,10 @@ def read_aerosol_optics(filename):
     logging.info(file_su)
     ds_su = xr.open_dataset(file_su)
     pprint(ds_su)
+    return ds_su
 
 
-def process_file(filename):
+def process_file(filename, ds_su):
     logging.info(filename)
     ds = xr.open_dataset(filename)
     # pprint(ds)
@@ -63,7 +64,7 @@ if __name__ == '__main__':
     logging_level = logging.DEBUG if args.debug else logging.INFO
     logging.basicConfig(stream=args.logfile, level=logging_level)
 
-    read_aerosol_optics(args.aerosol)
+    ds_su = read_aerosol_optics(args.aerosol)
 
     dates = pd.date_range(start=args.start, end=args.end, freq='D')
     logging.info(dates)
@@ -72,5 +73,5 @@ if __name__ == '__main__':
         date_str = date.strftime('%Y-%m-%b-%d-%j')
         filepath = os.path.join(args.datadir,
             fill_date_template(args.file_pattern, date_str))
-        process_file(filepath)
+        process_file(filepath, ds_su)
 
