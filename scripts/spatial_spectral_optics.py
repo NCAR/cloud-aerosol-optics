@@ -24,6 +24,12 @@ def read_aerosol_optics(filename):
     ds_su = xr.open_dataset(file_su)
     pprint(ds_su)
 
+    file_oc = os.path.expandvars(
+        aerosol_config['Types']['OC']['filename'])
+    logging.info(file_oc)
+    ds_oc = xr.open_dataset(file_oc)
+    pprint(ds_oc)
+
     file_du = os.path.expandvars(
         aerosol_config['Types']['DU']['filename'])
     logging.info(file_du)
