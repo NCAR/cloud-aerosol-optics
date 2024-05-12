@@ -16,8 +16,11 @@ def read_aerosol_optics(filename):
     with open(args.aerosol, 'r') as f:
         aerosol_config = yaml.safe_load(f)
         pprint(aerosol_config)
-    file_su = aerosol_config['Types']['SU']['filename']
+    file_su = os.path.expandvars(
+        aerosol_config['Types']['SU']['filename'])
     logging.info(file_su)
+    ds_su = xr.open_dataset(file_su)
+    pprint(ds_su)
 
 
 def process_file(filename):
