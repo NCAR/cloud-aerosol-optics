@@ -31,10 +31,10 @@ if __name__ == '__main__':
         default=os.path.join(os.getenv('HOME'), 'Data'),
         help='top-level data directory (default $HOME/Data)')
     parser.add_argument('--start', type=str,
-        default='20080801',
+        default='20080701',
         help='start date (yyyymmdd)')
     parser.add_argument('--end', type=str,
-        default='20080801',
+        default='20080705',
         help='end date (yyyymmdd)')
     parser.add_argument('--file_pattern', type=str,
         default=os.path.join('MERRA2_inst3', 'aer_Nv',
