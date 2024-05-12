@@ -51,7 +51,7 @@ def read_aerosol_optics(filename):
     return ds_su, ds_oc, ds_bc, ds_du, ds_ss
 
 
-def process_file(filename, ds_su):
+def process_file(filename, ds_su, ds_oc, ds_bc, ds_du, ds_ss):
     logging.info(filename)
     ds = xr.open_dataset(filename)
     # pprint(ds)
@@ -101,5 +101,5 @@ if __name__ == '__main__':
         date_str = date.strftime('%Y-%m-%b-%d-%j')
         filepath = os.path.join(args.datadir,
             fill_date_template(args.file_pattern, date_str))
-        process_file(filepath, ds_su)
+        process_file(filepath, ds_su, ds_oc, ds_bc, ds_du, ds_ss)
 
