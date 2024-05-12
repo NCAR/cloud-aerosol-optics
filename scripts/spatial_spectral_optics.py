@@ -12,16 +12,31 @@ from analysis_utils import fill_date_template
 
 
 def read_aerosol_optics(filename):
+
     logging.info(filename)
     with open(args.aerosol, 'r') as f:
         aerosol_config = yaml.safe_load(f)
         pprint(aerosol_config)
+
     file_su = os.path.expandvars(
         aerosol_config['Types']['SU']['filename'])
     logging.info(file_su)
     ds_su = xr.open_dataset(file_su)
     pprint(ds_su)
-    return ds_su
+
+    file_du = os.path.expandvars(
+        aerosol_config['Types']['DU']['filename'])
+    logging.info(file_du)
+    ds_du = xr.open_dataset(file_du)
+    pprint(ds_du)
+
+    file_ss = os.path.expandvars(
+        aerosol_config['Types']['SS']['filename'])
+    logging.info(file_ss)
+    ds_ss = xr.open_dataset(file_ss)
+    pprint(ds_ss)
+
+    return ds_su, ds_du, ds_ss
 
 
 def process_file(filename, ds_su):
@@ -64,7 +79,7 @@ if __name__ == '__main__':
     logging_level = logging.DEBUG if args.debug else logging.INFO
     logging.basicConfig(stream=args.logfile, level=logging_level)
 
-    ds_su = read_aerosol_optics(args.aerosol)
+    ds_su, ds_du, ds_ss = read_aerosol_optics(args.aerosol)
 
     dates = pd.date_range(start=args.start, end=args.end, freq='D')
     logging.info(dates)
