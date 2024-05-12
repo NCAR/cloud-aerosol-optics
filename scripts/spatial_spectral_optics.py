@@ -5,12 +5,15 @@ import logging
 import numpy as np
 import pandas as pd
 import xarray as xr
+from pprint import pprint
 
 from analysis_utils import fill_date_template
 
 
 def process_file(filename):
     logging.info(filename)
+    ds = xr.open_dataset(filename)
+    pprint(ds)
 
 
 if __name__ == '__main__':
@@ -49,6 +52,7 @@ if __name__ == '__main__':
 
     for date in dates:
         date_str = date.strftime('%Y-%m-%b-%d-%j')
-        filename = fill_date_template(args.file_pattern, date_str)
-        process_file(filename)
+        filepath = os.path.join(args.datadir,
+            fill_date_template(args.file_pattern, date_str))
+        process_file(filepath)
 
