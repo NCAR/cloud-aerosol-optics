@@ -54,7 +54,9 @@ def read_aerosol_optics(filename):
 def process_file(filename, ds_su, ds_oc, ds_bc, ds_du, ds_ss):
     logging.info(filename)
     ds = xr.open_dataset(filename)
-    # pprint(ds)
+    pprint(ds['SO4'])
+
+    # tau_ext_su = ds_su
 
 
 if __name__ == '__main__':
